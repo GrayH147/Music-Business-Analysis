@@ -1,4 +1,4 @@
-# Music-Business-Analysis
+![image](https://github.com/user-attachments/assets/effddee8-64d3-4896-8bdc-73c46a89b83e)# Music-Business-Analysis
 # 1. Tổng quan đồ án
 ## 1.1. Bài toán:
 1.	Phân tích tình hình kinh doanh nhạc số theo Doanh thu, Sản phẩm, Khách hàng và Nhân viên trong 4 năm trở lại đây.
@@ -6,7 +6,8 @@
 ## 1.2. Quá trình thực hiện đồ án:**
 - Giai đoạn 1: Nhóm giải quyết bài toán phân tích tình hình kinh doanh nhạc số trong 4 năm trở lại đây; nhóm lấy code slq từ Chinook database trên github, sau đó dùng công cụ Sql Server Management Studio để tạo database DB_Music trên database local.
 o	Cấu trúc dữ liệu:
- 
+ ![image](https://github.com/user-attachments/assets/d3e225a2-cd50-4316-af14-ce54a03e9b9e)
+
 o	Vấn đề: Dữ liệu còn thiếu khá nhiều, format ngày tháng năm chưa đồng nhất, kiểu dữ liệu là số nhưng hiện là kiểu chữ. Vì thế phải làm sạch dữ liệu, định dạng lại ngày tháng năm, điền những dữ liệu trống bằng chuỗi “Unknow”.
 - Giai đoạn 2: Nhóm cùng nhau đặt ra các câu hỏi để từ đó tìm ra insight có liên quan để phân tích tình hình kinh doanh nhạc số trong 4 năm trở lại đây. Sau đó trực quan hóa dữ liệu bằng công cụ Power BI.
 - Giai đoạn 3: Nhóm tiến hành giải quyết bài toán dự đoán bao lâu thì khách hàng sẽ quay lại mua hàng bằng thuật toán Decision Tree Classifier trên công cụ Visual Studio Code.
@@ -105,7 +106,7 @@ Hình ảnh ví dụ:
  
 Dữ liệu được lưu thành file **Music_Project.xlsx**
 
-2.1.3. Phân loại khách hàng dựa trên bảng RFM Score:
+### 2.1.3. Phân loại khách hàng dựa trên bảng RFM Score:
 Tìm Recency khách hàng:
 tx_max_purchase = tx_data.groupby('CustomerId').InvoiceDate.max().reset_index()
 tx_max_purchase.columns = ['CustomerId','MaxPurchaseDate']
@@ -154,9 +155,9 @@ score_to_segment = {
     '11_Lost customers': [111, 112, 121, 131, 141, 151]
 }
 
-# Đảo ngược mapping để dễ tra cứu
+Đảo ngược mapping để dễ tra cứu
 mapping = {score: segment for segment, scores in score_to_segment.items() for score in scores}
-# Map RFM_Score sang Segment
+Map RFM_Score sang Segment
 tx_user_rfm['Segment'] = tx_user_rfm['RFM_Score'].astype(int).map(mapping)
 
 grouped = tx_user_rfm.groupby('Segment').agg(Count=('CustomerId', 'count')
@@ -168,31 +169,36 @@ grouped = tx_user_rfm.groupby('Segment').agg(Count=('CustomerId', 'count')
 Kết quả được lưu vào file CustomerSegment.csv
 
 
-2.1.4. Trực quan hóa dữ liệu
+### 2.1.4. Trực quan hóa dữ liệu
 Tình hình doanh thu theo thời gian:
- 
+ ![image](https://github.com/user-attachments/assets/22422a44-2a37-448a-bac9-882fb54f8140)
 
 Tình hình doanh thu theo bài hát:
- 
+ ![image](https://github.com/user-attachments/assets/ff795e11-258a-41d6-9dc3-709f7b98ecba)
+
 Tình hình doanh thu theo khách hàng:
- 
+ ![image](https://github.com/user-attachments/assets/b71a5c32-3760-492e-bd14-8a5be1f44bb1)
+
 
 Thống kê thông tin nhân viên:
- 
+ ![image](https://github.com/user-attachments/assets/b2ca46be-100a-4fa1-9b1b-91742db123e9)
+
 Phần trăm quay lại của khách hàng theo thời gian:
  
+![image](https://github.com/user-attachments/assets/60f85871-abb0-4cfb-a1b9-555b5c7884a4)
 
 Tình hình doanh thu theo các đối tượng khác:
- 
-2.1.5 Kết luận
+ ![image](https://github.com/user-attachments/assets/baf66f5f-189c-48ab-a900-6410139a44ea)
+
+### 2.1.5 Kết luận
 - Doanh thu tăng trưởng không ổn định qua các năm, có những thời điểm giảm mạnh. Các thời điểm doanh thu tăng mạnh là 01/2022, 04/2023, 06/2023, 11/2025. Giảm mạnh ở các thời điểm 11/2023 và 02/2025.
 - Dự báo doanh thu đến 2026 cho thấy có xu hướng giảm và có khả năng phục hồi nhẹ.
 - Tuy nhiên tổng số bài hát bán được giữa các tháng không chênh lệch cao (33-35 bài hát)  số lượng bài hát bán ra ổn định.
 - Vì tập khách hàng tập trung chủ yếu là người Châu Âu và Châu Mỹ nên những bài hát thuộc dòng nhạc Rock và Latin được ưa chuộng nhất.
 - Tập khách hàng Potential Loyalist là nhiều nhất, chiếm đến 51% trên tổng 8 tập khách hàng. Nên đầu tư giữ chân các khách hàng tiềm năng và triển khai chương trình tri ân các khách hàng thuộc tập khách hàng Champion.
 - Phần trăm khách hàng quay lại tương đối cao, những khách hàng bắt đầu mua từ năm 2022 quay lại mua lên đến 50%, tuy nhiên lượng khách hàng còn ít (59 khách hàng) và thời gian quay lại còn cách khá xa (từ 3 tháng trở lên) nên còn cần phải quảng bá để tiếp cận nhiều khách hàng hơn.
-2.2. Bài toán 2
-2.2.1. Mô tả dữ liệu
+## 2.2. Bài toán 2
+### 2.2.1. Mô tả dữ liệu
 Từ file Music_Project.xlsx sẽ chỉ lấy những thông tin về hóa đơn, khách hàng, ngày mua hàng, số lượng mua, tổng tiền, địa chỉ mua hàng để giải quyết bài toán.
 Các thu thập dữ liệu: Dùng công cụ SQL Server Management Studio → trỏ đến database DB_Music → Chạy câu truy vấn sau: 
 Select I.InvoiceId,CustomerId,InvoiceDate,BillingCountry,Total,sum(quantity) as Quantity
@@ -202,28 +208,32 @@ GROUP By I.InvoiceId,CustomerId,InvoiceDate,BillingCountry,Total
 ORDER BY I.InvoiceId
 
 → Sau đó lưu vào file Dataset.csv  
- 
-Tổng quan dữ liệu
-2.2.2. Mô tả các biến
+ ![image](https://github.com/user-attachments/assets/8591278e-9929-4a3f-8f09-986e27ec2c77)
+
+
+### 2.2.2. Mô tả các biến
 •	InvoiceId: Mã hóa đơn.
 •	CustomerId: Mã khách hàng mua hóa đơn.
 •	InvoiceDate: Ngày mua hàng.
 •	BillingCountry: Quốc gia nơi khách mua hàng.
 •	Total: tổng tiền hóa đơn khách hàng phải thoanh toán.
 •	Quantiy: Số lượng bài hát khách hàng mua.
-2.2.3. Tiền xử lý dữ liệu:
+
+### 2.2.3. Tiền xử lý dữ liệu:
 - Xử lý định dạng cột InvoiceDate thành kiểu Datetime:
 tx_data['InvoiceDate']=pd.to_datetime(tx_data['InvoiceDate'])
+![image](https://github.com/user-attachments/assets/80802192-0023-4d1e-9988-f7559a4880f9)
 
  
 → Có 412 dòng dữ liệu.
 - Lấy dữ liệu 4 năm trở lại đây:
 tx_3y = tx_data[(tx_data.InvoiceDate < date(2025,1,1))].reset_index(drop=True)
 
- 
+ ![image](https://github.com/user-attachments/assets/38476942-ac08-485c-b181-81fbe9eccb0c)
+
 → Có 332 dòng dữ liệu
-2.2.4. Tiến hành hành bài toán dự đoán:
-Bước 1: Tìm số ngày giữa 3 lần mua gần nhất của khách hàng
+### 2.2.4. Tiến hành hành bài toán dự đoán:
+**Bước 1**: Tìm số ngày giữa 3 lần mua gần nhất của khách hàng
 tx_day_order['PrevInvoiceDate'] = tx_day_order.groupby('CustomerId')['InvoiceDay'].shift(1)
 tx_day_order['T2InvoiceDate'] = tx_day_order.groupby('CustomerId')['InvoiceDay'].shift(2)
 tx_day_order['T3InvoiceDate'] = tx_day_order.groupby('CustomerId')['InvoiceDay'].shift(3)
@@ -237,16 +247,16 @@ tx_day_order['DayDiff'] = (tx_day_order['InvoiceDay'] - tx_day_order['PrevInvoic
 tx_day_order['DayDiff2'] = (tx_day_order['InvoiceDay'] - tx_day_order['T2InvoiceDate']).dt.days
 tx_day_order['DayDiff3'] = (tx_day_order['InvoiceDay'] - tx_day_order['T3InvoiceDate']).dt.days
 
-Bước 2: Lấy ngày mua hàng gần nhất của khách hàng
+**Bước 2**: Lấy ngày mua hàng gần nhất của khách hàng
 tx_last_purchase = tx_3y.groupby('CustomerId').InvoiceDate.max().reset_index()
 tx_last_purchase.columns = ['CustomerId','MaxPurchaseDate']
 
-Bước 3: Lấy dữ liệu 1 năm tiếp theo để tính khoảng thời gian khách hàng quay lại
+**Bước 3**: Lấy dữ liệu 1 năm tiếp theo để tính khoảng thời gian khách hàng quay lại
 tx_next = tx_data[(tx_data.InvoiceDate >= date(2025,1,1)) & (tx_data.InvoiceDate < date(2026,1,1))].reset_index(drop=True)
 tx_next_first_purchase = tx_next.groupby('CustomerId').InvoiceDate.min().reset_index()
 tx_next_first_purchase.columns = ['CustomerId','MinPurchaseDate']
 
-Bước 4: Tìm ngày gần nhất khách hàng quay trở lại mua
+**Bước 4**: Tìm ngày gần nhất khách hàng quay trở lại mua
 tx_purchase_dates = pd.merge(tx_last_purchase,tx_next_first_purchase,on='CustomerId',how='left')
 
 tx_purchase_dates['MaxPurchaseDate'] = pd.to_datetime(tx_purchase_dates['MaxPurchaseDate'])
@@ -256,10 +266,10 @@ tx_purchase_dates['NextPurchaseDay'] = (tx_purchase_dates['MinPurchaseDate'] - t
 
 tx_user = pd.merge(tx_user, tx_purchase_dates[['CustomerId','NextPurchaseDay']],on='CustomerId',how='left')
 
-Bước 5: Đặt cho những người chưa quay lại mua tính tới 1 năm tiếp theo giá trị là 9999
+**Bước 5:** Đặt cho những người chưa quay lại mua tính tới 1 năm tiếp theo giá trị là 9999
 tx_user = tx_user.fillna(9999)
 
-Bước 6: Định nghĩa các khoảng thời gian khách hàng quay lại theo cụm
+**Bước 6:** Định nghĩa các khoảng thời gian khách hàng quay lại theo cụm
 	Trên 500 ngày mới quay trở lại thì thuộc cụm 0
 	Trên 200 ngày mới quay trở lại thì thuộc cụm 1
 	Từ 200 ngày trở xuống thì thuộc cụm 2
@@ -268,21 +278,23 @@ tx_class.loc[tx_class.NextPurchaseDay>200,'NextPurchaseDayRange'] = 1
 tx_class.loc[tx_class.NextPurchaseDay>500,'NextPurchaseDayRange'] = 0
 → Số lượng khách hàng theo cụm:
 tx_class.NextPurchaseDayRange.value_counts()
- 
+ ![image](https://github.com/user-attachments/assets/ac691b50-ba40-4731-b1ec-9e036977640b)
+
 → Tỷ lệ khách hàng trong các cụm:
 tx_class.NextPurchaseDayRange.value_counts()
 
- 
-Bước 7: Chạy thuật toán dự đoán khoảng thời gian:
-Bước 7.1: Xác định biến phụ thuộc X, y:
+ ![image](https://github.com/user-attachments/assets/e0ee51f3-a288-4e95-abb2-bebcbfd0d4ee)
+
+**Bước 7**: Chạy thuật toán dự đoán khoảng thời gian:
+**Bước 7.1**: Xác định biến phụ thuộc X, y:
 tx_class = tx_class.drop('NextPurchaseDay',axis=1)
 X, y = tx_class.drop('NextPurchaseDayRange',axis=1), tx_class.NextPurchaseDayRange
-Bước 7.2: Chia tập dữ liệu thành 2 tập: 
+**Bước 7.2**: Chia tập dữ liệu thành 2 tập: 
 	Tập Train: X_train, y_train
 	Tập test: X_test, y_test
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
-Bước 7.3: Training data
+**Bước 7.3**: Training data
 	Import thư viện của thuật toán:
 from sklearn.model_selection import KFold, cross_val_score, train_test_split
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
@@ -291,16 +303,17 @@ from sklearn.tree import DecisionTreeClassifier, plot_tree,DecisionTreeRegressor
 tree_model = DecisionTreeClassifier(criterion="gini", max_depth=3, random_state=42)
 tree_model.fit(X_train, y_train)
 
-Bước 8: Kết quả dự đoán và đánh giá mô hình
+**Bước 8**: Kết quả dự đoán và đánh giá mô hình
 	Kết quả dự đoán:
 y_pred_train = tree_model.predict(X_train)
 X_train['Predict']=y_pred_train
 	Đánh giá mô hình tập Train:
-# Đánh giá mô hình
+
 accuracy = accuracy_score(y_train, y_pred_train)
 print(f"Độ chính xác (Accuracy): {accuracy:.2f}")
 print("\nBáo cáo phân loại:")
 print(classification_report(y_train, y_pred_train))
+![image](https://github.com/user-attachments/assets/c9bf21e6-28dc-4066-b308-a0a5a6994346)
 
  
 	Áp dụng để lấy kết quả dự đoán tập Test:
@@ -311,12 +324,16 @@ accuracy = accuracy_score(y_test, y_pred)
 print(f"Độ chính xác (Accuracy): {accuracy:.2f}")
 print("\nBáo cáo phân loại:")
 print(classification_report(y_test,y_pred))
+![image](https://github.com/user-attachments/assets/8969342c-90e6-42a1-877b-98d47430d7cc)
 
  
  Dựa trên kết quả tập Test ta thấy được mô hình đạt độ chính xác 100% thời gian khách hàng quay lại thực tế như hình dưới đây. Suy ra mô hình đã hoạt động rất tốt.
- 
+ ![image](https://github.com/user-attachments/assets/8e18d71a-8701-4af1-a834-4f59c4ba0eae)
+![image](https://github.com/user-attachments/assets/b0e07f52-a2ca-4b5e-98ad-e7482d8be256)
+![image](https://github.com/user-attachments/assets/92e591d2-75f1-4820-9d22-4251b55c8abf)
 
-2.2.5. Kết luận
+
+### 2.2.5. Kết luận
 - Mô hình sử dụng dự đoán hoạt động rất tốt do có độ chính xác cao (100%)
 - Thời gian để khách hàng quay lại mua hàng là khá cao, một phần vì sản phẩm không có tính hư hao, chỉ mang tính chất về tinh thần cho khách hàng.
 - Lượng khác hàng quay lại dưới 200 ngày còn thấp (chỉ chiếm 17%), khách hàng sau hơn 500 ngày quay lại thì khá cao (chiếm 61%)
