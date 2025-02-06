@@ -1,12 +1,14 @@
-![image](https://github.com/user-attachments/assets/effddee8-64d3-4896-8bdc-73c46a89b83e)# Music-Business-Analysis
+# Music-Business-Analysis
 # 1. Tổng quan đồ án
 ## 1.1. Bài toán:
 1.	Phân tích tình hình kinh doanh nhạc số theo Doanh thu, Sản phẩm, Khách hàng và Nhân viên trong 4 năm trở lại đây.
 2.	Dự đoán khoảng bao lâu thì khách hàng sẽ quay lại mua hàng.
 ## 1.2. Quá trình thực hiện đồ án:**
 - Giai đoạn 1: Nhóm giải quyết bài toán phân tích tình hình kinh doanh nhạc số trong 4 năm trở lại đây; nhóm lấy code slq từ Chinook database trên github, sau đó dùng công cụ Sql Server Management Studio để tạo database DB_Music trên database local.
+
 o	Cấu trúc dữ liệu:
  ![image](https://github.com/user-attachments/assets/d3e225a2-cd50-4316-af14-ce54a03e9b9e)
+
 
 o	Vấn đề: Dữ liệu còn thiếu khá nhiều, format ngày tháng năm chưa đồng nhất, kiểu dữ liệu là số nhưng hiện là kiểu chữ. Vì thế phải làm sạch dữ liệu, định dạng lại ngày tháng năm, điền những dữ liệu trống bằng chuỗi “Unknow”.
 - Giai đoạn 2: Nhóm cùng nhau đặt ra các câu hỏi để từ đó tìm ra insight có liên quan để phân tích tình hình kinh doanh nhạc số trong 4 năm trở lại đây. Sau đó trực quan hóa dữ liệu bằng công cụ Power BI.
