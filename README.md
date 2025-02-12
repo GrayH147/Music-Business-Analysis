@@ -1,9 +1,11 @@
 # Music-Business-Analysis
 # 1. Tổng quan đồ án
-## Bảng phân công công việc
 **Thành viên:**
+
 Phạm Quốc Huy
+
 Nguyễn Kim Hiếu
+
 Nguyễn Ngọc Xuân Anh
 ## 1.1. Bài toán:
 1.	Phân tích tình hình kinh doanh nhạc số theo Doanh thu, Sản phẩm, Khách hàng và Nhân viên trong 4 năm trở lại đây.
