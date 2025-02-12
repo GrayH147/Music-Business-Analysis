@@ -1,8 +1,10 @@
 # Music-Business-Analysis
 # 1. Tổng quan đồ án
 ## Bảng phân công công việc
-![image](https://github.com/user-attachments/assets/cbd0e8d1-6d2f-4e35-9dfe-ce9334e3e3ac)
-
+**Thành viên:**
+Phạm Quốc Huy
+Nguyễn Kim Hiếu
+Nguyễn Ngọc Xuân Anh
 ## 1.1. Bài toán:
 1.	Phân tích tình hình kinh doanh nhạc số theo Doanh thu, Sản phẩm, Khách hàng và Nhân viên trong 4 năm trở lại đây.
 2.	Dự đoán khoảng bao lâu thì khách hàng sẽ quay lại mua hàng.
